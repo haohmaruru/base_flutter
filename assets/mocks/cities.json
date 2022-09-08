@@ -1,0 +1,58 @@
+[
+  {
+    "name": "An Giang",
+    "slug": "an-giang",
+    "type": 0,
+    "name_with_type": "Tỉnh An Giang",
+    "code": "89"
+  },
+  {
+    "name": "Bà Rịa - Vũng Tàu",
+    "slug": "ba-ria-vung-tau",
+    "type": 0,
+    "name_with_type": "Tỉnh Bà Rịa - Vũng Tàu",
+    "code": "77"
+  },
+  {
+    "name": "Bắc Giang",
+    "slug": "bac-giang",
+    "type":0,
+    "name_with_type": "Tỉnh Bắc Giang",
+    "code": "24"
+  },
+  {
+    "name": "Bắc Kạn",
+    "slug": "bac-kan",
+    "type": 0,
+    "name_with_type": "Tỉnh Bắc Kạn",
+    "code": "06"
+  },
+  {
+    "name": "Bạc Liêu",
+    "slug": "bac-lieu",
+    "type": 0,
+    "name_with_type": "Tỉnh Bạc Liêu",
+    "code": "95"
+  },
+  {
+    "name": "Bắc Ninh",
+    "slug": "bac-ninh",
+    "type": 0,
+    "name_with_type": "Tỉnh Bắc Ninh",
+    "code": "27"
+  },
+  {
+    "name": "Bến Tre",
+    "slug": "ben-tre",
+    "type": 0,
+    "name_with_type": "Tỉnh Bến Tre",
+    "code": "83"
+  },
+  {
+    "name": "Cần thơ",
+    "slug": "can-tho",
+    "type": 0,
+    "name_with_type": "Tỉnh Bến Tre",
+    "code": ""
+  }
+]

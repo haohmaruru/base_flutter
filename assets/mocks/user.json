@@ -1,0 +1,21 @@
+{
+  "is_new_user": true,
+  "token": "",
+  "user_name": "Nguyễn Văn A",
+  "uid": 152621121,
+  "avatar": "https://homepages.cae.wisc.edu/~ece533/images/cat.png",
+  "cover": "https://homepages.cae.wisc.edu/~ece533/images/cat.png",
+  "gender": "male",
+  "follow_gender": "female",
+  "date_of_birth": "20/9/2000",
+  "height": 160,
+  "weight": 55,
+  "caption": "hôm nay chán quá",
+  "city": {
+    "name": "Bắc Kạn",
+    "slug": "bac-kan",
+    "type": 0,
+    "name_with_type": "Tỉnh Bắc Kạn",
+    "code": "06"
+  }
+}
