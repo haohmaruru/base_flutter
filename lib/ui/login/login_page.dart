@@ -9,9 +9,14 @@ class LoginPage extends BasePage<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(Strings.content.tr),
-      ),
+      body: super.build(context),
+    );
+  }
+
+  @override
+  Widget buildContentView(BuildContext context) {
+    return Center(
+      child: Text(Strings.content.trans),
     );
   }
 }
