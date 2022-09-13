@@ -20,7 +20,7 @@ class MyApp extends GetWidget<AppController> {
             theme: Get.find<ThemeManager>().themeData,
             initialRoute: _getRoute(),
             getPages: AppPages.pages,
-            localizationsDelegates: [
+            localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,

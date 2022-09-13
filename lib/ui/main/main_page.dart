@@ -6,7 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 class MainPage extends BasePage<MainController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: buildContent(context));
+    return Scaffold(body: buildMainContent(context));
   }
 
   @override

@@ -7,10 +7,13 @@ import '../../widget/empty_widget.dart';
 
 abstract class BaseListPage<I, M extends BaseListController<I>>
     extends BasePage<M> {
+  final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
   @override
   Widget buildContentView(BuildContext context) {
     Widget content;
-    if (controller.items.isEmpty) {
+    if (controller.items.value.isEmpty) {
       content = Stack(children: <Widget>[
         ListView(
           physics: AlwaysScrollableScrollPhysics(),
@@ -26,21 +29,22 @@ abstract class BaseListPage<I, M extends BaseListController<I>>
           controller: controller.controller,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) =>
-              buildItem(context, controller.items[index], index),
+              buildItem(context, controller.items.value[index], index),
           separatorBuilder: (context, index) => buildSeparator(context, index),
-          itemCount: controller.items.length);
+          itemCount: controller.items.value.length);
     }
     if (enableRefresh) {
       content = RefreshIndicator(
         child: content,
         onRefresh: onRefresh,
+        key: refreshIndicatorKey,
       );
     }
     return content;
   }
 
   Future<void> onRefresh() async {
-    return controller.refresh();
+    return controller.refreshData();
   }
 
   @override

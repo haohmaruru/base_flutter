@@ -4,4 +4,5 @@ class AppRoutes {
   static const OTP = '/otp';
   static const INTRODUCE = '/introduce';
   static const MAIN = '/main';
+  static const LIST = '/list';
 }

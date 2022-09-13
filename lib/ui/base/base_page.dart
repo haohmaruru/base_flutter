@@ -14,10 +14,10 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
 
   @override
   Widget build(BuildContext context) {
-    return buildContent(context);
+    return buildMainContent(context);
   }
 
-  Widget buildContent(BuildContext context) {
+  Widget buildMainContent(BuildContext context) {
     return Obx(() => buildViewByState(context));
   }
 
@@ -31,7 +31,7 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
   }
 
   Widget buildViewByState(BuildContext context) {
-    switch (controller.viewState) {
+    switch (controller.viewState.value) {
       case ViewState.error:
         return ErrorViewWidget(
           message: controller.errorMessage!.trans,
