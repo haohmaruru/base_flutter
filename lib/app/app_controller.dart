@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:base/data/api/api_constants.dart';
 import 'package:base/data/api/repository/common_repository.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:get/get.dart';
@@ -25,9 +26,7 @@ class AppController extends GetxController {
     await initStorage();
     initTheme();
     initLanguage();
-    await initAuth();
-    // initPhotos();
-    // initGoogleMap();
+    await initAuth(environment);
   }
 
   initLanguage() async {
@@ -47,7 +46,7 @@ class AppController extends GetxController {
     await Get.find<ThemeManager>().init();
   }
 
-  Future<void> initAuth() async {
+  Future<void> initAuth(Environment environment) async {
     final storage = Get.find<AppStorage>();
     final user = await storage.getUserInfo();
     final token = await storage.getUserAccessToken();
@@ -61,8 +60,12 @@ class AppController extends GetxController {
     }
   }
 
-  initApi({String? token}) async {
-    String baseUrl;
+  initApi({String? token, Environment environment = Environment.dev}) async {
+    String baseUrl = environment == Environment.dev
+        ? BASE_URL_DEV
+        : environment == Environment.staging
+            ? BASE_URL_STAGING
+            : BASE_URL_PROD;
   }
 }
 

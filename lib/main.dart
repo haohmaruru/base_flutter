@@ -14,6 +14,5 @@ void main() async {
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark));
-  ;
   runApp(MyApp());
 }

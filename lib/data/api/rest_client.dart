@@ -1,21 +1,14 @@
+import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'api_constants.dart';
 
 class RestClient {
-  static const TIMEOUT = 30000;
+  static const TIMEOUT = 30; // seconds
   static const ENABLE_LOG = true;
   static const ACCESS_TOKEN_HEADER = 'Authorization';
   static const LANGUAGE = 'Accept-Language';
-
-  // singleton
-  static final RestClient instance = new RestClient._internal();
-
-  factory RestClient() {
-    return instance;
-  }
-
-  RestClient._internal();
 
   late String baseUrl;
   late Map<String, dynamic> headers;
@@ -49,34 +42,34 @@ class RestClient {
     headers.remove(ACCESS_TOKEN_HEADER);
   }
 
-  static Dio getDio({String? customUrl, bool isUpload = false}) {
+  Dio getDio({String? customUrl, bool isUpload = false}) {
     var dio = Dio(
-        instance.getDioBaseOption(customUrl: customUrl, isUpload: isUpload));
+      getDioBaseOption(customUrl: customUrl, isUpload: isUpload),
+    );
 
     if (ENABLE_LOG) {
-      dio.interceptors.add(LogInterceptor(
-          requestBody: true, responseBody: true, logPrint: logPrint));
+      dio.interceptors.add(CurlLoggerDioInterceptor());
+      dio.interceptors.add(
+        PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90),
+      );
     }
-    // //check expire time
-    dio.interceptors.add(InterceptorsWrapper(
-      onError: (DioError error, handler) async {
-        handler.next(error);
-      },
-    ));
 
     return dio;
   }
 
   BaseOptions getDioBaseOption({String? customUrl, bool isUpload = false}) {
     return BaseOptions(
-      baseUrl: isUpload
-          ? UPLOAD_PHOTO_URL
-          : customUrl != null
-              ? customUrl
-              : instance.baseUrl,
-      connectTimeout: TIMEOUT,
-      receiveTimeout: TIMEOUT,
-      headers: instance.headers,
+      baseUrl: isUpload ? UPLOAD_PHOTO_URL : customUrl ?? baseUrl,
+      connectTimeout: const Duration(seconds: TIMEOUT),
+      receiveTimeout: const Duration(seconds: TIMEOUT),
+      headers: headers,
       responseType: ResponseType.json,
     );
   }
