@@ -27,7 +27,7 @@ class RestClient {
       'x-device-id': deviceId
     };
     if (accessToken != null) setToken(accessToken);
-    setLanguage(language!);
+    if (language != null) setLanguage(language);
   }
 
   void setToken(String token) {

@@ -1,9 +1,14 @@
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:android_id/android_id.dart';
 import 'package:base/data/api/api_constants.dart';
 import 'package:base/data/api/repository/common_repository.dart';
+import 'package:base/data/api/rest_client.dart';
 import 'package:base/res/theme/theme_manager.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/storage/app_storage.dart';
 import '../di/locator.dart';
@@ -25,7 +30,7 @@ class AppController extends GetxController {
     await setupLocator();
     await initStorage();
     initTheme();
-    initLanguage();
+    await initLanguage();
     await initAuth(environment);
   }
 
@@ -33,8 +38,8 @@ class AppController extends GetxController {
     String? language = await Get.find<CommonRepository>().getLanguage();
     locale.value = AppLocalizations.supportedLocales
         .firstWhere((locale) => locale.languageCode == language, orElse: () {
-      language = AppLocalizations.supportedLocales.last.languageCode;
-      return AppLocalizations.supportedLocales.last;
+      language = AppLocalizations.supportedLocales.first.languageCode;
+      return AppLocalizations.supportedLocales.first;
     });
   }
 
@@ -60,13 +65,36 @@ class AppController extends GetxController {
     }
   }
 
-  initApi({String? token, Environment environment = Environment.dev}) async {
+  Future<void> initApi(
+      {String? token, Environment environment = Environment.dev}) async {
     String baseUrl = environment == Environment.dev
         ? BASE_URL_DEV
         : environment == Environment.staging
             ? BASE_URL_STAGING
             : BASE_URL_PROD;
+    final deviceId = await getDeviceId();
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    Get.find<RestClient>().init(
+      baseUrl,
+      platform: Platform.isAndroid ? 'Android' : 'Ios',
+      deviceId: deviceId,
+      language: locale.value?.countryCode,
+      accessToken: token,
+      appVersion: packageInfo.version,
+    );
+  }
+
+  Future<String?> getDeviceId() async {
+    if (Platform.isAndroid) {
+      const androidIdPlugin = AndroidId();
+      return (await androidIdPlugin.getId()); //UUID for Android
+    } else if (Platform.isIOS) {
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      final data = await deviceInfoPlugin.iosInfo;
+      return data.identifierForVendor; //UUID for iOS
+    }
+    return '';
   }
 }
 
-enum AuthState { unauthorized, authorized, uncompleted, new_install }
+enum AuthState { unauthorized, authorized, uncompleted, newInstall }

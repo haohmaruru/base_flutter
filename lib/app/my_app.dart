@@ -1,7 +1,6 @@
 import 'package:base/app/app_controller.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +39,7 @@ class MyApp extends GetWidget<AppController> {
         return AppRoutes.INITIAL;
       case AuthState.authorized:
         return AppRoutes.MAIN;
-      case AuthState.new_install:
+      case AuthState.newInstall:
         return AppRoutes.MAIN;
       case AuthState.uncompleted:
         return AppRoutes.MAIN;
