@@ -1,12 +1,11 @@
+import 'package:base/data/repository/common_repository.dart';
+import 'package:base/enum/theme_enum.dart';
+import 'package:base/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../data/api/repository/common_repository.dart';
-import '../colors.dart';
 import 'text_theme.dart';
-
-enum AppTheme { White, Dark }
 
 /// Returns enum value name without enum class name.
 String enumName(AppTheme anyEnum) {
@@ -42,8 +41,8 @@ final appThemeData = {
       )),
 };
 
-class ThemeManager with ChangeNotifier {
-  ThemeData? _themeData;
+class ThemeManager {
+  final Rx<ThemeData?> themeData = Rx(appThemeData[AppTheme.White]);
 
   init() async {
     // We load theme at the start
@@ -51,36 +50,28 @@ class ThemeManager with ChangeNotifier {
   }
 
   /// Use this method on UI to get selected theme.
-  ThemeData get themeData {
-    if (_themeData == null) {
-      _themeData = appThemeData[AppTheme.White];
-    }
-    return _themeData!;
-  }
+  // ValueNotifier<ThemeData?> get themeData {
+  //   _themeData.value ??= appThemeData[AppTheme.White];
+  //   return _themeData;
+  // }
 
   void _loadTheme() async {
     final preferredTheme = await Get.find<CommonRepository>().getTheme();
-    currentAppTheme = AppTheme.values[preferredTheme];
-    _themeData = appThemeData[currentAppTheme];
-    // Once theme is loaded - notify listeners to update UI
-    notifyListeners();
+    currentAppTheme = preferredTheme;
+    themeData.value = appThemeData[currentAppTheme];
   }
 
   /// Sets theme and notifies listeners about change.
   setTheme(AppTheme theme) async {
     currentAppTheme = theme;
-    _themeData = appThemeData[theme];
-
-    // Here we notify listeners that theme changed
-    // so UI have to be rebuild
-    notifyListeners();
-    await Get.find<CommonRepository>().setTheme(AppTheme.values.indexOf(theme));
+    themeData.value = appThemeData[theme];
+    await Get.find<CommonRepository>().setTheme(theme);
   }
 }
 
 AppTheme currentAppTheme = AppTheme.White;
 
-ColorScheme getColor() => Get.find<ThemeManager>().themeData.colorScheme;
+ColorScheme getColor() => Get.find<ThemeManager>().themeData.value!.colorScheme;
 
 extension MyColorScheme on ColorScheme {
   Color getColorTheme(Color colorThemeWhite, Color colorThemeDark) {
@@ -97,12 +88,12 @@ extension MyColorScheme on ColorScheme {
   Color get colorPrimary =>
       getColorTheme(DColors.primaryColor, DColors.primaryColor);
 
-  Color get success => getColorTheme(DColors.blueLight, DColors.yellowffDcolor);
+  Color get success => getColorTheme(DColors.redGoogle, DColors.yellowffDcolor);
 
   Color get black => getColorTheme(DColors.black, DColors.black);
 
   Color get colorWhite => getColorTheme(DColors.whiteColor, DColors.whiteColor);
 
   Color get colorInActive =>
-      getColorTheme(DColors.whiteColor, DColors.whiteColor);
+      getColorTheme(DColors.whiteColor, DColors.darkTextColor);
 }

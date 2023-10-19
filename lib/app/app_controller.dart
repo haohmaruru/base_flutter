@@ -1,16 +1,17 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:android_id/android_id.dart';
 import 'package:base/data/api/api_constants.dart';
-import 'package:base/data/api/repository/common_repository.dart';
 import 'package:base/data/api/rest_client.dart';
+import 'package:base/data/repository/common_repository.dart';
+import 'package:base/data/repository/user_repository.dart';
+import 'package:base/data/storage/local_storage.dart';
+import 'package:base/enum/language_enum.dart';
 import 'package:base/res/theme/theme_manager.dart';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:base/utils/device_utils.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../data/storage/app_storage.dart';
 import '../di/locator.dart';
 import '../res/app_localizations.dart';
 import 'environment.dart';
@@ -20,9 +21,9 @@ class AppController extends GetxController {
   Rx<AuthState> authState = AuthState.unauthorized.obs;
   Rx<Locale?> locale = Rx(null);
 
-  setLanguage(String language) async {
+  setLanguage(Language language) async {
     Get.find<CommonRepository>().setLanguage(language);
-    locale.value = Locale(language);
+    locale.value = Locale(language.languageCode);
   }
 
   init(Environment environment) async {
@@ -35,7 +36,8 @@ class AppController extends GetxController {
   }
 
   initLanguage() async {
-    String? language = await Get.find<CommonRepository>().getLanguage();
+    String language =
+        (await Get.find<CommonRepository>().getLanguage()).languageCode;
     locale.value = AppLocalizations.supportedLocales
         .firstWhere((locale) => locale.languageCode == language, orElse: () {
       language = AppLocalizations.supportedLocales.first.languageCode;
@@ -44,7 +46,7 @@ class AppController extends GetxController {
   }
 
   initStorage() async {
-    await Get.find<AppStorage>().init();
+    await Get.find<LocalStorage>().init();
   }
 
   initTheme() async {
@@ -52,9 +54,9 @@ class AppController extends GetxController {
   }
 
   Future<void> initAuth(Environment environment) async {
-    final storage = Get.find<AppStorage>();
-    final user = await storage.getUserInfo();
-    final token = await storage.getUserAccessToken();
+    final userRepository = Get.find<UserRepository>();
+    final user = await userRepository.getUserInfo();
+    final token = await userRepository.getUserAccessToken();
 
     if (user != null && token != null) {
       await initApi(token: token);
@@ -72,7 +74,7 @@ class AppController extends GetxController {
         : environment == Environment.staging
             ? BASE_URL_STAGING
             : BASE_URL_PROD;
-    final deviceId = await getDeviceId();
+    final deviceId = await Get.find<DeviceUtil>().getDeviceId();
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     Get.find<RestClient>().init(
       baseUrl,
@@ -82,18 +84,6 @@ class AppController extends GetxController {
       accessToken: token,
       appVersion: packageInfo.version,
     );
-  }
-
-  Future<String?> getDeviceId() async {
-    if (Platform.isAndroid) {
-      const androidIdPlugin = AndroidId();
-      return (await androidIdPlugin.getId()); //UUID for Android
-    } else if (Platform.isIOS) {
-      final deviceInfoPlugin = DeviceInfoPlugin();
-      final data = await deviceInfoPlugin.iosInfo;
-      return data.identifierForVendor; //UUID for iOS
-    }
-    return '';
   }
 }
 

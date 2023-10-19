@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:base/enum/language_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -24,12 +25,9 @@ class _AppLocalizationsDelegate
 }
 
 class AppLocalizations {
-  static const VI_VN = "vi";
-  static const EN_US = "en";
-
-  static const List<Locale> supportedLocales = [
-    const Locale('vi'),
-    const Locale('en'),
+  static List<Locale> supportedLocales = [
+    Locale(Language.vi.languageCode),
+    Locale(Language.en.languageCode),
   ];
 
   AppLocalizations(this.localeName);

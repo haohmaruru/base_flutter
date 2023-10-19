@@ -68,7 +68,7 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
   }
 
   showError(String? errorMessage, {String? title}) {
-    if (errorMessage?.isNotEmpty == true)
+    if (errorMessage?.isNotEmpty == true) {
       showDialog(
           context: Get.context!,
           builder: (_) => OneButtonDialogWidget(
@@ -76,6 +76,7 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
                 description: errorMessage?.trans,
                 textConfirm: Strings.close.trans,
               ));
+    }
   }
 
   Widget buildContentView(BuildContext context);
@@ -95,12 +96,13 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
       await callApiTask();
     } catch (e, stackTrace) {}
     hideLoading();
-    if (controller.progressState == ProgressState.success && onSuccess != null)
+    if (controller.progressState == ProgressState.success &&
+        onSuccess != null) {
       onSuccess();
-    else if (controller.progressState == ProgressState.error) {
-      if (onFail != null)
+    } else if (controller.progressState == ProgressState.error) {
+      if (onFail != null) {
         onFail();
-      else {
+      } else {
         showError(controller.errorMessage?.trans);
       }
     }

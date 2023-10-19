@@ -1,61 +1,75 @@
 import 'dart:convert';
 
+import 'package:base/data/storage/local_storage.dart';
+import 'package:base/enum/language_enum.dart';
+import 'package:base/enum/theme_enum.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../api/model/user.dart';
 
-class AppStorage {
+class AppStorage implements LocalStorage {
   late GetStorage box;
-  static const STORAGE_NAME = "base_meoluoi_storage";
-  static const USER_ACCESS_TOKEN = "user_access_token";
-  static const USER_INFO = "user_info";
-  static const THEME = "theme";
-  static const LANGUAGE = "language";
+  final storageName = "base_storage";
+  final userAccessToken = "user_access_token";
+  final userInfo = "user_info";
+  final themeApp = "theme_app";
+  final languageApp = "language";
 
-  init() async {
-    await GetStorage.init(STORAGE_NAME);
-    box = GetStorage(STORAGE_NAME);
+  @override
+  Future<void> init() async {
+    await GetStorage.init(storageName);
+    box = GetStorage(storageName);
   }
 
-  Future<void> saveUserAccessToken(String accessToken) async {
-    box.write(USER_ACCESS_TOKEN, accessToken);
+  @override
+  Future<void> setUserAccessToken(String accessToken) async {
+    box.write(userAccessToken, accessToken);
   }
 
+  @override
   Future<String?> getUserAccessToken() async {
-    final token = await box.read(USER_ACCESS_TOKEN);
+    final token = await box.read(userAccessToken);
     return token;
   }
 
-  Future<void> saveUserInfo(User user) async {
+  @override
+  Future<void> setUserInfo(User user) async {
     String json = jsonEncode(user.toJson());
-    box.write(USER_INFO, json);
+    box.write(userInfo, json);
   }
 
+  @override
   Future<User?> getUserInfo() async {
-    final userJson = await box.read(USER_INFO);
+    final userJson = await box.read(userInfo);
     return userJson != null ? User.fromJson(json.decode(userJson)) : null;
   }
 
-  Future<void> setTheme(int theme) async {
-    box.write(THEME, theme);
+  @override
+  Future<void> setTheme(AppTheme theme) async {
+    box.write(themeApp, theme.name);
   }
 
-  Future<int> getTheme() async {
-    final theme = await box.read(THEME);
-    return theme ?? 0;
+  @override
+  Future<AppTheme> getTheme() async {
+    final themeName = await box.read(themeApp);
+
+    return themeName?.getAppTheme(themeName) ?? AppTheme.White;
   }
 
-  Future<void> setLanguage(String language) async {
-    box.write(LANGUAGE, language);
+  @override
+  Future<void> setLanguage(Language language) async {
+    box.write(languageApp, language.languageCode);
   }
 
-  Future<String?> getLanguage() async {
-    final theme = await box.read(LANGUAGE);
-    return theme;
+  @override
+  Future<Language> getLanguage() async {
+    final languageName = await box.read(languageApp);
+    return languageName?.getLanguage() ?? Language.vi;
   }
 
-  Future<void> logout() async {
-    if (box.hasData(USER_ACCESS_TOKEN)) await box.remove(USER_ACCESS_TOKEN);
-    if (box.hasData(USER_INFO)) await box.remove(USER_INFO);
+  @override
+  Future<void> clearData() async {
+    if (box.hasData(userAccessToken)) await box.remove(userAccessToken);
+    if (box.hasData(userInfo)) await box.remove(userInfo);
   }
 }

@@ -18,10 +18,13 @@ abstract class BaseController<C> extends GetxController {
   }
 
   setState(ViewState newState, {forceUpdate = false, dynamic error}) {
-    if (viewState == newState && !forceUpdate) return;
+    if (viewState.value == newState && !forceUpdate) return;
 
+    if (forceUpdate) {
+      viewState.firstRebuild = true;
+    }
     viewState.value = newState;
-    if (viewState == ViewState.error && error != null) {
+    if (viewState.value == ViewState.error && error != null) {
       errorMessage = getErrorMessage(error);
     }
     update();

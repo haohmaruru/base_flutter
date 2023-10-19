@@ -16,7 +16,7 @@ abstract class BaseListPage<I, M extends BaseListController<I>>
     if (controller.items.value.isEmpty) {
       content = Stack(children: <Widget>[
         ListView(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
         ),
         buildEmptyView(context),
       ]);
@@ -79,5 +79,5 @@ abstract class BaseListPage<I, M extends BaseListController<I>>
 
   Color get dividerColor => getColor().colorWhite;
 
-  ScrollPhysics get physics => AlwaysScrollableScrollPhysics();
+  ScrollPhysics get physics => const AlwaysScrollableScrollPhysics();
 }

@@ -12,21 +12,23 @@ class MyApp extends GetWidget<AppController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Obx(() => GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "base",
-            locale: controller.locale.value,
-            theme: Get.find<ThemeManager>().themeData,
-            initialRoute: _getRoute(),
-            getPages: AppPages.pages,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalizations.supportedLocales,
-          )),
+      child: Obx(
+        () => GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "base",
+          locale: controller.locale.value,
+          theme: Get.find<ThemeManager>().themeData.value,
+          initialRoute: _getRoute(),
+          getPages: AppPages.pages,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+        ),
+      ),
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
       },

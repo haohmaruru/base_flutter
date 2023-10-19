@@ -25,8 +25,7 @@ extension Strings on String {
   static String get deleteAccountWillBe => "deleteAccountWillBe";
   static String get saveImage => "saveImage";
   static String get knowledge => "knowledge";
-  static String get authentication_code_incorrect =>
-      "authentication_code_incorrect";
+  static String get authentication_code_incorrect => "authentication_code_incorrect";
   static String get max3Label => "max3Label";
   static String get serverMaintenance => "serverMaintenance";
   static String get whoSuitableMe => "whoSuitableMe";
@@ -58,8 +57,7 @@ extension Strings on String {
   static String get ageLimit => "ageLimit";
   static String get search => "search";
   static String get reportLink => "reportLink";
-  static String get showPublicChosenInformation =>
-      "showPublicChosenInformation";
+  static String get showPublicChosenInformation => "showPublicChosenInformation";
   static String get sogiescCap => "sogiescCap";
   static String get continueEdit => "continueEdit";
   static String get close => "close";
@@ -75,8 +73,7 @@ extension Strings on String {
   static String get heightWeight => "heightWeight";
   static String get hot_member => "hot_member";
   static String get checkIn => "checkIn";
-  static String get needPermissionBothStorageAndCamera =>
-      "needPermissionBothStorageAndCamera";
+  static String get needPermissionBothStorageAndCamera => "needPermissionBothStorageAndCamera";
   static String get wantUpdateProfile => "wantUpdateProfile";
   static String get suggested_acquaintance => "suggested_acquaintance";
   static String get accountManagement => "accountManagement";
@@ -156,8 +153,7 @@ extension Strings on String {
   static String get noData => "noData";
   static String get lomoId => "lomoId";
   static String get saveImageSuccess => "saveImageSuccess";
-  static String get contentOfPermissionLocation =>
-      "contentOfPermissionLocation";
+  static String get contentOfPermissionLocation => "contentOfPermissionLocation";
   static String get enterUserName => "enterUserName";
   static String get age => "age";
   static String get gift => "gift";
@@ -206,16 +202,14 @@ extension Strings on String {
   static String get confident => "confident";
   static String get save => "save";
   static String get protection => "protection";
-  static String get enterReferralCodeDescription =>
-      "enterReferralCodeDescription";
+  static String get enterReferralCodeDescription => "enterReferralCodeDescription";
   static String get noteThree => "noteThree";
   static String get reSentOtp => "reSentOtp";
   static String get file => "file";
   static String get eventQueer => "eventQueer";
   static String get sendRequestSuccess => "sendRequestSuccess";
   static String get updateProfileSuccess => "updateProfileSuccess";
-  static String get pleaseWaitVerifyDatingImage =>
-      "pleaseWaitVerifyDatingImage";
+  static String get pleaseWaitVerifyDatingImage => "pleaseWaitVerifyDatingImage";
   static String get your_birthday => "your_birthday";
   static String get invite_friends => "invite_friends";
   static String get share => "share";
@@ -371,8 +365,7 @@ extension Strings on String {
   static String get notChoose => "notChoose";
   static String get forgotYourPassword => "forgotYourPassword";
   static String get lomo => "lomo";
-  static String get inviteFrendUseLomoDescription =>
-      "inviteFrendUseLomoDescription";
+  static String get inviteFrendUseLomoDescription => "inviteFrendUseLomoDescription";
   static String get relationship => "relationship";
   static String get addQuestionSuccess => "addQuestionSuccess";
   static String get email => "email";
@@ -516,8 +509,7 @@ extension Strings on String {
   static String get notEnoughCandy => "notEnoughCandy";
   static String get theme => "theme";
   static String get thanksForRegisterLomo => "thanksForRegisterLomo";
-  static String get contentOfPermissionBothStorageAndCamera =>
-      "contentOfPermissionBothStorageAndCamera";
+  static String get contentOfPermissionBothStorageAndCamera => "contentOfPermissionBothStorageAndCamera";
   static String get place => "place";
   static String get copy => "copy";
   static String get portraitImage => "portraitImage";
