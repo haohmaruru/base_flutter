@@ -2,7 +2,6 @@ import 'package:base/res/dimens.dart';
 import 'package:base/res/theme/text_theme.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class RoundButton extends StatefulWidget {
@@ -16,8 +15,9 @@ class RoundButton extends StatefulWidget {
   final double? width;
   final double? height;
 
-  RoundButton(
-      {this.enable,
+  const RoundButton(
+      {super.key,
+      this.enable,
       this.text,
       this.textStyle,
       this.onPressed,

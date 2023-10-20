@@ -1,4 +1,5 @@
 import 'package:base/app/app_routes.dart';
+import 'package:base/res/dimens.dart';
 import 'package:base/res/theme/text_theme.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:base/ui/base/base_page.dart';
@@ -23,12 +24,12 @@ class LoginPage extends BasePage<LoginController> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: 80,
-            width: 400,
+            height: 80.hs,
+            width: 400.ws,
             color: getColor().success,
-            child: const Text(
+            child: Text(
               'change theme',
-              style: TextStyle(fontSize: 30),
+              style: text34.bold.black,
             ),
           ),
           InkWell(

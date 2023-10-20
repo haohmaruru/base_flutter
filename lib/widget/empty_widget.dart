@@ -11,7 +11,7 @@ class EmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment(0, -0.25),
+      alignment: const Alignment(0, -0.25),
       child: Text(message ?? Strings.noData.trans, style: text16.black),
     );
   }

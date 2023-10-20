@@ -1,7 +1,6 @@
 import 'package:base/app/app_controller.dart';
 import 'package:base/enum/language_enum.dart';
 import 'package:base/enum/theme_enum.dart';
-import 'package:base/res/app_localizations.dart';
 import 'package:base/res/strings.dart';
 import 'package:base/res/theme/text_theme.dart';
 import 'package:base/res/theme/theme_manager.dart';
@@ -58,15 +57,14 @@ class ListPage extends BaseListPage<String, ListController> {
         ),
         InkWell(
           onTap: () {
-            final controller = Get.find<AppController>();
-            if (controller.locale.value ==
-                AppLocalizations.supportedLocales[0]) {
-              controller.setLanguage(Language.en);
-              Get.updateLocale(Locale(Language.en.languageCode));
+            final appController = Get.find<AppController>();
+            if (appController.locale.value?.languageCode ==
+                Language.vi.languageCode) {
+              appController.setLanguage(Language.en);
             } else {
-              controller.setLanguage(Language.vi);
-              Get.updateLocale(Locale(Language.vi.languageCode));
+              appController.setLanguage(Language.vi);
             }
+            controller.setState(ViewState.loaded, forceUpdate: true);
           },
           child: Text(
             Strings.language.trans,

@@ -49,7 +49,7 @@ class AppLocalizations {
 
   static const delegate = _AppLocalizationsDelegate();
 
-  final String localeName;
+  String localeName;
 
   String localize(String key, {List<Object>? args}) {
     return Intl.message(key, name: key, args: args, locale: localeName);

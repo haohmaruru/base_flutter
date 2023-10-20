@@ -53,7 +53,7 @@ class AppStorage implements LocalStorage {
   Future<AppTheme> getTheme() async {
     final themeName = await box.read(themeApp);
 
-    return themeName?.getAppTheme(themeName) ?? AppTheme.White;
+    return getAppThemeFromName(themeName);
   }
 
   @override
@@ -63,8 +63,8 @@ class AppStorage implements LocalStorage {
 
   @override
   Future<Language> getLanguage() async {
-    final languageName = await box.read(languageApp);
-    return languageName?.getLanguage() ?? Language.vi;
+    final languageCode = await box.read(languageApp);
+    return getLanguageFromCode(languageCode);
   }
 
   @override

@@ -23,7 +23,9 @@ class AppController extends GetxController {
 
   setLanguage(Language language) async {
     Get.find<CommonRepository>().setLanguage(language);
+    Get.updateLocale(Locale(language.languageCode));
     locale.value = Locale(language.languageCode);
+    AppLocalizations.of(Get.context!)?.localeName = language.languageCode;
   }
 
   init(Environment environment) async {

@@ -14,15 +14,15 @@ class ErrorViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      alignment: Alignment(0, -0.25),
+      padding: EdgeInsets.symmetric(horizontal: 20.ws),
+      alignment: Alignment(0, -0.25.ws),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(message, style: text16.black),
           SizedBox(height: 16.ws),
           RoundButton(
-            width: 120,
+            width: 120.ws,
             text: Strings.retry.trans,
             onPressed: onRetry,
           )

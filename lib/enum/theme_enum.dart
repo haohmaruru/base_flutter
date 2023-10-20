@@ -11,14 +11,12 @@ extension AppThemeExt on AppTheme {
   }
 }
 
-extension AppThemeStringExt on String? {
-  AppTheme getAppTheme() {
-    switch (this) {
-      case 'White':
-        return AppTheme.White;
-      case 'Dark':
-        return AppTheme.Dark;
-    }
-    return AppTheme.White;
+AppTheme getAppThemeFromName(String? appThemeName) {
+  switch (appThemeName) {
+    case 'White':
+      return AppTheme.White;
+    case 'Dark':
+      return AppTheme.Dark;
   }
+  return AppTheme.White;
 }

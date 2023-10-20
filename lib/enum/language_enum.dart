@@ -11,14 +11,12 @@ extension LanguageExt on Language {
   }
 }
 
-extension AppThemeStringExt on String? {
-  Language getLanguage() {
-    switch (this) {
-      case 'vi':
-        return Language.vi;
-      case 'en':
-        return Language.en;
-    }
-    return Language.vi;
+Language getLanguageFromCode(String? languageCode) {
+  switch (languageCode) {
+    case 'vi':
+      return Language.vi;
+    case 'en':
+      return Language.en;
   }
+  return Language.vi;
 }

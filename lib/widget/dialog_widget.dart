@@ -17,9 +17,9 @@ class DialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 35),
+      insetPadding: EdgeInsets.symmetric(horizontal: 35.ws),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.ws),
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -38,7 +38,7 @@ class DialogWidget extends StatelessWidget {
             right: 16.ws,
           ),
           margin: EdgeInsets.only(top: 60.ws),
-          decoration: new BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16.ws),
@@ -65,7 +65,7 @@ class DialogWidget extends StatelessWidget {
                       style: text16.black,
                     ),
               SizedBox(
-                height: 24.0,
+                height: 24.hs,
               ),
               buildBottomButton(context),
             ],
@@ -76,6 +76,7 @@ class DialogWidget extends StatelessWidget {
             right: 16.ws,
             child: CircleAvatar(
               backgroundColor: Colors.transparent,
+              radius: 60.ws,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(60.ws)),
                 child: image != null
@@ -86,7 +87,6 @@ class DialogWidget extends StatelessWidget {
                         color: getColor().colorPrimary,
                       ),
               ),
-              radius: 60.ws,
             )),
       ],
     );
@@ -119,7 +119,7 @@ class NoButtonDialogWidget extends DialogWidget {
 
   @override
   Widget buildBottomButton(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 0,
     );
   }
@@ -185,7 +185,7 @@ class TwoButtonDialogWidget extends DialogWidget {
           child: RoundButton(
             text: textCancel ?? Strings.cancel.trans,
             radius: 60.ws,
-            height: 36,
+            height: 36.hs,
             color: getColor().colorWhite,
             textStyle: text16.bold.black,
             onPressed: () {
@@ -195,7 +195,7 @@ class TwoButtonDialogWidget extends DialogWidget {
           ),
         ),
         SizedBox(
-          width: 15,
+          width: 15.hs,
         ),
         Expanded(
           child: RoundButton(
@@ -203,7 +203,7 @@ class TwoButtonDialogWidget extends DialogWidget {
             text: textConfirm ?? Strings.confirm.trans,
             radius: 60.ws,
             textStyle: text16.bold.white,
-            height: 36,
+            height: 36.hs,
             onPressed: () {
               Navigator.pop(context);
               if (onConfirmed != null) onConfirmed!();
