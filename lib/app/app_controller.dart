@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:base/data/api/api_constants.dart';
 import 'package:base/data/api/rest_client.dart';
 import 'package:base/data/repository/common_repository.dart';
 import 'package:base/data/repository/user_repository.dart';
@@ -17,7 +16,7 @@ import '../res/app_localizations.dart';
 import 'environment.dart';
 
 class AppController extends GetxController {
-  late Environment env;
+  late EnvironmentConfig env;
   Rx<AuthState> authState = AuthState.unauthorized.obs;
   Rx<Locale?> locale = Rx(null);
 
@@ -29,29 +28,16 @@ class AppController extends GetxController {
   }
 
   String getAppTitle() {
-    String title = '';
-    switch (env) {
-      case Environment.dev:
-        title = 'Base Dev';
-        break;
-      case Environment.staging:
-        title = 'Base Staging';
-        break;
-      case Environment.prod:
-        title = 'Base Prod';
-        break;
-    }
-    print('AppTitle: $title');
-    return title;
+    return env.appName;
   }
 
-  init(Environment environment) async {
-    env = environment;
+  init(EnvironmentConfig environmentConfig) async {
+    env = environmentConfig;
     await setupLocator();
     await initStorage();
     initTheme();
     await initLanguage();
-    await initAuth(environment);
+    await initAuth();
   }
 
   initLanguage() async {
@@ -72,7 +58,7 @@ class AppController extends GetxController {
     await Get.find<ThemeManager>().init();
   }
 
-  Future<void> initAuth(Environment environment) async {
+  Future<void> initAuth() async {
     final userRepository = Get.find<UserRepository>();
     final user = await userRepository.getUserInfo();
     final token = await userRepository.getUserAccessToken();
@@ -86,13 +72,10 @@ class AppController extends GetxController {
     }
   }
 
-  Future<void> initApi(
-      {String? token, Environment environment = Environment.dev}) async {
-    String baseUrl = environment == Environment.dev
-        ? BASE_URL_DEV
-        : environment == Environment.staging
-            ? BASE_URL_STAGING
-            : BASE_URL_PROD;
+  Future<void> initApi({
+    String? token,
+  }) async {
+    String baseUrl = env.apiUrl;
     final deviceId = await Get.find<DeviceUtil>().getDeviceId();
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     Get.find<RestClient>().init(
@@ -106,4 +89,4 @@ class AppController extends GetxController {
   }
 }
 
-enum AuthState { unauthorized, authorized, uncompleted, newInstall }
+enum AuthState { unauthorized, authorized, newInstall }

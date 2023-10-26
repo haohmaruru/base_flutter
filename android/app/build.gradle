@@ -72,7 +72,7 @@ android {
         dev {
             dimension "fluttter_flavor_demo"
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "base Dev"
+            resValue "string", "app_name", "base dev"
             versionNameSuffix ".dev"
         }
         prod {

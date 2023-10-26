@@ -13,7 +13,12 @@
 *.iml
 *.ipr
 *.iws
-.idea/
+.idea/libraries/
+.idea/base_flutter.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/.gitignore
 
 # Visual Studio Code related
 .classpath

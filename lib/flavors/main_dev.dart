@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.put<AppController>(AppController()).init(Environment.dev);
+  await Get.put<AppController>(AppController()).init(EnvironmentConfig.dev());
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
