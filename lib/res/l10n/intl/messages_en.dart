@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("App Name"),
         "both": MessageLookupByLibrary.simpleMessage("Both"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changeTheme": MessageLookupByLibrary.simpleMessage("Change theme"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "content": MessageLookupByLibrary.simpleMessage("Content"),

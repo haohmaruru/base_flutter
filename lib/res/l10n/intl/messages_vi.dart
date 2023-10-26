@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("App Name"),
         "both": MessageLookupByLibrary.simpleMessage("Cả hai"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "changeTheme": MessageLookupByLibrary.simpleMessage("Đổi chủ đề"),
         "close": MessageLookupByLibrary.simpleMessage("Đóng"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
         "content": MessageLookupByLibrary.simpleMessage("Nội dung"),

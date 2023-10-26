@@ -1,7 +1,6 @@
 import 'package:base/app/app_routes.dart';
 import 'package:base/res/dimens.dart';
 import 'package:base/res/icons.dart';
-import 'package:base/res/images.dart';
 import 'package:base/res/theme/text_theme.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:base/ui/base/base_page.dart';
@@ -16,6 +15,7 @@ class LoginPage extends BasePage<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: getColor().colorWhite,
       body: super.build(context),
     );
   }
@@ -57,44 +57,42 @@ class LoginPage extends BasePage<LoginController> {
               width: 273,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            color: Colors.yellow,
-            child: SvgPicture.asset(AppIcons.header),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            color: Colors.yellow,
-            child: Image.asset(AppImages.chaomung1),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            color: Colors.white,
-            child: Image.asset(AppImages.dangnhap1),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            color: Colors.yellow,
-            child: Image.asset(AppImages.header1),
-          ),
-          SizedBox(
-            height: 10,
-          ),
           InkWell(
             child: Text(
-              Strings.content.trans,
+              'Click for open list page',
               style: text18.black,
             ),
             onTap: () {
               Get.toNamed(AppRoutes.LIST);
+            },
+          ),
+          SizedBox(
+            height: 20.hs,
+          ),
+          InkWell(
+            onTap: () {
+              controller.changeLanguage();
+            },
+            child: Text(
+              Strings.language.trans,
+              style: text34.bold.black,
+            ),
+          ),
+          SizedBox(
+            height: 20.hs,
+          ),
+          InkWell(
+            child: Container(
+              height: 80,
+              width: 400,
+              color: getColor().success,
+              child: Text(
+                Strings.changeTheme.trans,
+                style: text34.black.bold,
+              ),
+            ),
+            onTap: () {
+              controller.changeTheme();
             },
           ),
         ],

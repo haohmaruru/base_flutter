@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `Change theme`
+  String get changeTheme {
+    return Intl.message(
+      'Change theme',
+      name: 'changeTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get language {
     return Intl.message(

@@ -13,7 +13,7 @@ String enumName(AppTheme anyEnum) {
 }
 
 final appThemeData = {
-  AppTheme.White: ThemeData(
+  AppTheme.light: ThemeData(
       primaryColor: DColors.primaryColor,
       primaryColorDark: DColors.primaryColorDark,
       backgroundColor: DColors.whiteColor,
@@ -29,7 +29,7 @@ final appThemeData = {
       ),
       colorScheme:
           ColorScheme.fromSwatch().copyWith(secondary: DColors.accentColor)),
-  AppTheme.Dark: ThemeData(
+  AppTheme.dark: ThemeData(
       brightness: Brightness.dark,
       primaryColor: Colors.black,
       highlightColor: Colors.transparent,
@@ -42,7 +42,7 @@ final appThemeData = {
 };
 
 class ThemeManager {
-  final Rx<ThemeData?> themeData = Rx(appThemeData[AppTheme.White]);
+  final Rx<ThemeData?> themeData = Rx(appThemeData[AppTheme.light]);
 
   init() async {
     // We load theme at the start
@@ -69,19 +69,19 @@ class ThemeManager {
   }
 }
 
-AppTheme currentAppTheme = AppTheme.White;
+AppTheme currentAppTheme = AppTheme.light;
 
 ColorScheme getColor() => Get.find<ThemeManager>().themeData.value!.colorScheme;
 
 extension MyColorScheme on ColorScheme {
-  Color getColorTheme(Color colorThemeWhite, Color colorThemeDark) {
+  Color getColorTheme(Color colorThemeLight, Color colorThemeDark) {
     switch (currentAppTheme) {
-      case AppTheme.White:
-        return colorThemeWhite;
-      case AppTheme.Dark:
+      case AppTheme.light:
+        return colorThemeLight;
+      case AppTheme.dark:
         return colorThemeDark;
       default:
-        return colorThemeWhite;
+        return colorThemeLight;
     }
   }
 

@@ -28,6 +28,23 @@ class AppController extends GetxController {
     AppLocalizations.of(Get.context!)?.localeName = language.languageCode;
   }
 
+  String getAppTitle() {
+    String title = '';
+    switch (env) {
+      case Environment.dev:
+        title = 'Base Dev';
+        break;
+      case Environment.staging:
+        title = 'Base Staging';
+        break;
+      case Environment.prod:
+        title = 'Base Prod';
+        break;
+    }
+    print('AppTitle: $title');
+    return title;
+  }
+
   init(Environment environment) async {
     env = environment;
     await setupLocator();

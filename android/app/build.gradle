@@ -59,6 +59,27 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+
+        debug {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    flavorDimensions "fluttter_flavor_demo"
+    productFlavors {
+        dev {
+            dimension "fluttter_flavor_demo"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "base Dev"
+            versionNameSuffix ".dev"
+        }
+        prod {
+            dimension "fluttter_flavor_demo"
+            resValue "string", "app_name", "base Prod"
+            versionNameSuffix ".prod"
+        }
     }
 }
 

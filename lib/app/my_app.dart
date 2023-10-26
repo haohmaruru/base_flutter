@@ -15,7 +15,7 @@ class MyApp extends GetWidget<AppController> {
       child: Obx(
         () => GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "base",
+          title: controller.getAppTitle(),
           locale: controller.locale.value,
           theme: Get.find<ThemeManager>().themeData.value,
           initialRoute: _getRoute(),

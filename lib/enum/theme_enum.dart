@@ -1,22 +1,22 @@
-enum AppTheme { White, Dark }
+enum AppTheme { light, dark }
 
 extension AppThemeExt on AppTheme {
   String get name {
     switch (this) {
-      case AppTheme.White:
-        return 'White';
-      case AppTheme.Dark:
-        return 'Dark';
+      case AppTheme.light:
+        return 'light';
+      case AppTheme.dark:
+        return 'dark';
     }
   }
 }
 
 AppTheme getAppThemeFromName(String? appThemeName) {
   switch (appThemeName) {
-    case 'White':
-      return AppTheme.White;
-    case 'Dark':
-      return AppTheme.Dark;
+    case 'light':
+      return AppTheme.light;
+    case 'dark':
+      return AppTheme.dark;
   }
-  return AppTheme.White;
+  return AppTheme.light;
 }

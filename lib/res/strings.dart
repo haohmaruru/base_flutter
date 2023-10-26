@@ -24,6 +24,7 @@ extension Strings on String {
   static String get english => "english";
   static String get theme => "theme";
   static String get noData => "noData";
+  static String get changeTheme => "changeTheme";
   static String get close => "close";
   static String get day => "day";
   static String get retry => "retry";
