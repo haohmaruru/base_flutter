@@ -48,8 +48,8 @@ class _RoundButtonState extends State<RoundButton> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.radius ?? 0),
             color: enable.value
-                ? widget.color ?? getColor().colorWhite
-                : widget.disableColor ?? getColor().colorInActive,
+                ? widget.color ?? themes.colorWhite
+                : widget.disableColor ?? themes.colorInActive,
           ),
           alignment: Alignment.center,
           height: widget.height ?? 40.ws,
@@ -63,9 +63,7 @@ class _RoundButtonState extends State<RoundButton> {
           if (enablePress && enable.value && widget.onPressed != null) {
             disableFastClick();
             widget.onPressed!();
-          } else {
-            print(" kduocclicknha");
-          }
+          } else {}
         },
       ),
     );

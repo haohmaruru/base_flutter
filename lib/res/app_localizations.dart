@@ -33,7 +33,6 @@ class AppLocalizations {
   AppLocalizations(this.localeName);
 
   static Future<AppLocalizations> load(Locale locale) {
-    print("locale ${locale.languageCode}");
     final String name = locale.countryCode?.isEmpty == true
         ? locale.languageCode
         : locale.toString();

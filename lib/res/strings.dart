@@ -15,6 +15,7 @@ extension Strings on String {
   static String get en => "en";
   static String get language => "language";
   static String get vietnamese => "vietnamese";
+  static String get login => "login";
   static String get content => "content";
   static String get unknownErrorMessage => "unknownErrorMessage";
   static String get both => "both";
@@ -24,6 +25,7 @@ extension Strings on String {
   static String get english => "english";
   static String get theme => "theme";
   static String get noData => "noData";
+  static String get changeTheme => "changeTheme";
   static String get close => "close";
   static String get day => "day";
   static String get retry => "retry";

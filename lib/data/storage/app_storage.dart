@@ -1,11 +1,10 @@
 import 'dart:convert';
 
+import 'package:base/data/model/user.dart';
 import 'package:base/data/storage/local_storage.dart';
 import 'package:base/enum/language_enum.dart';
 import 'package:base/enum/theme_enum.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../api/model/user.dart';
 
 class AppStorage implements LocalStorage {
   late GetStorage box;

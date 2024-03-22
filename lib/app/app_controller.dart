@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:base/data/api/api_constants.dart';
 import 'package:base/data/api/rest_client.dart';
-import 'package:base/data/repository/common_repository.dart';
-import 'package:base/data/repository/user_repository.dart';
+import 'package:base/data/repositories/common_repository.dart';
+import 'package:base/data/repositories/user_repository.dart';
 import 'package:base/data/storage/local_storage.dart';
 import 'package:base/enum/language_enum.dart';
 import 'package:base/res/theme/theme_manager.dart';
 import 'package:base/utils/device_utils.dart';
+import 'package:base/utils/notification_utils.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -17,7 +17,7 @@ import '../res/app_localizations.dart';
 import 'environment.dart';
 
 class AppController extends GetxController {
-  late Environment env;
+  late EnvironmentConfig env;
   Rx<AuthState> authState = AuthState.unauthorized.obs;
   Rx<Locale?> locale = Rx(null);
 
@@ -28,13 +28,22 @@ class AppController extends GetxController {
     AppLocalizations.of(Get.context!)?.localeName = language.languageCode;
   }
 
-  init(Environment environment) async {
-    env = environment;
+  String getAppTitle() {
+    return env.appName;
+  }
+
+  init(EnvironmentConfig environmentConfig) async {
+    env = environmentConfig;
     await setupLocator();
-    await initStorage();
+    _initNotification(environmentConfig);
+    await _initStorage();
     initTheme();
     await initLanguage();
-    await initAuth(environment);
+    await initAuth();
+  }
+
+  _initNotification(EnvironmentConfig environmentConfig) async {
+    NotificationUtils().initNotification(environmentConfig);
   }
 
   initLanguage() async {
@@ -47,7 +56,7 @@ class AppController extends GetxController {
     });
   }
 
-  initStorage() async {
+  _initStorage() async {
     await Get.find<LocalStorage>().init();
   }
 
@@ -55,7 +64,7 @@ class AppController extends GetxController {
     await Get.find<ThemeManager>().init();
   }
 
-  Future<void> initAuth(Environment environment) async {
+  Future<void> initAuth() async {
     final userRepository = Get.find<UserRepository>();
     final user = await userRepository.getUserInfo();
     final token = await userRepository.getUserAccessToken();
@@ -69,17 +78,14 @@ class AppController extends GetxController {
     }
   }
 
-  Future<void> initApi(
-      {String? token, Environment environment = Environment.dev}) async {
-    String baseUrl = environment == Environment.dev
-        ? BASE_URL_DEV
-        : environment == Environment.staging
-            ? BASE_URL_STAGING
-            : BASE_URL_PROD;
+  Future<void> initApi({
+    String? token,
+  }) async {
     final deviceId = await Get.find<DeviceUtil>().getDeviceId();
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     Get.find<RestClient>().init(
-      baseUrl,
+      env.apiUrl,
+      uploadUrl: env.uploadUrl,
       platform: Platform.isAndroid ? 'Android' : 'Ios',
       deviceId: deviceId,
       language: locale.value?.countryCode,
@@ -89,4 +95,4 @@ class AppController extends GetxController {
   }
 }
 
-enum AuthState { unauthorized, authorized, uncompleted, newInstall }
+enum AuthState { unauthorized, authorized, newInstall }

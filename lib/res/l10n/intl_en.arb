@@ -9,6 +9,7 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "theme": "Theme",
+  "changeTheme": "Change theme",
   "language": "Language",
   "defaults": "Defaults",
   "vietnamese": "Vietnamese",
@@ -17,5 +18,6 @@
   "all": "All",
   "noData": "No data",
   "retry": "Retry",
-  "both": "Both"
+  "both": "Both",
+  "login":"Login"
 }

@@ -1,15 +1,18 @@
+import 'package:base/res/strings.dart';
 import 'package:base/res/theme/theme_manager.dart';
+import 'package:base/widget/dialog_widget.dart';
+import 'package:base/widget/error_widget.dart';
+import 'package:base/widget/loading_dialog.dart';
+import 'package:base/widget/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../res/strings.dart';
-import '../../widget/dialog_widget.dart';
-import '../../widget/error_widget.dart';
-import '../../widget/loading_dialog.dart';
-import '../../widget/loading_widget.dart';
 import 'base_controller.dart';
 
+//ignore: must_be_immutable
 abstract class BasePage<C extends BaseController> extends GetWidget<C> {
+  Color get backgroundLoadingColor => themes.colorWhite;
+
   Widget? _loadingDialog;
 
   @override
@@ -21,15 +24,19 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
     return Obx(() => buildViewByState(context));
   }
 
-  Widget buildDefaultLoading() {
+  /// Show loading widget when view in state [ViewState.loading]
+  /// Please custom for your loading view for state [ViewState.loading]
+  Widget buildLoading() {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: backgroundLoadingColor,
+      color: themes.colorWhite,
       child: Center(child: LoadingWidget()),
     );
   }
 
+  /// Handle state of [ViewState] from [controller]
+  /// And update view with state
   Widget buildViewByState(BuildContext context) {
     switch (controller.viewState.value) {
       case ViewState.error:
@@ -40,12 +47,14 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
       case ViewState.loaded:
         return buildContentView(context);
       case ViewState.loading:
-        return buildLoadingView;
+        return loadingView;
       default:
         return Container();
     }
   }
 
+  /// Function for show dialog loading
+  /// Use for case you want to show loading while do something
   showLoading({BuildContext? dialogContext}) {
     if (_loadingDialog == null) {
       _loadingDialog = LoadingDialog();
@@ -60,13 +69,16 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
     }
   }
 
-  hideLoading({BuildContext? dialogContext}) {
+  /// Function for hide dialog loading after it showed
+  hideLoading() {
     if (_loadingDialog != null) {
-      Navigator.pop(dialogContext ?? Get.context!);
+      Navigator.pop(Get.context!);
       _loadingDialog = null;
     }
   }
 
+  /// Show dialog error with [errorMessage] and optional [title]
+  /// Please override or custom it for your UI
   showError(String? errorMessage, {String? title}) {
     if (errorMessage?.isNotEmpty == true) {
       showDialog(
@@ -79,22 +91,29 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
     }
   }
 
+  /// this function must be override for build content of ui
+  /// when view in state [ViewState.loaded]
   Widget buildContentView(BuildContext context);
 
-  Widget get buildLoadingView => buildDefaultLoading();
+  Widget get loadingView => buildLoading();
 
-  void onModelReady() {}
-
+  /// override it for do something when click button retry
+  /// when view in state [ViewState.error]
   void onRetry() {}
 
-  callApi(
-      {required Function callApiTask,
+  /// This function to tracking task like request the api and handle result
+  /// If success then [onSuccess] will be call
+  /// Else if [onFail] not null then call [onFail]
+  /// Else will be handle error and show it
+  taskProcessing(
+      {required Function execute,
       Function? onSuccess,
       Function? onFail}) async {
     showLoading();
     try {
-      await callApiTask();
+      await execute();
     } catch (e, stackTrace) {}
+
     hideLoading();
     if (controller.progressState == ProgressState.success &&
         onSuccess != null) {
@@ -107,6 +126,4 @@ abstract class BasePage<C extends BaseController> extends GetWidget<C> {
       }
     }
   }
-
-  Color get backgroundLoadingColor => getColor().colorWhite;
 }

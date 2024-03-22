@@ -75,11 +75,11 @@ extension TextStyleExt on TextStyle {
 
   //Color style
 
-  TextStyle get black => copyWith(color: getColor().black);
+  TextStyle get black => copyWith(color: themes.black);
 
-  TextStyle get white => copyWith(color: getColor().colorWhite);
+  TextStyle get white => copyWith(color: themes.colorWhite);
 
-  TextStyle get textErrorColor => copyWith(color: getColor().error);
+  TextStyle get textErrorColor => copyWith(color: themes.error);
 }
 
 TextTheme createTextTheme() => TextTheme(

@@ -84,7 +84,7 @@ class DialogWidget extends StatelessWidget {
                     : Container(
                         height: 60.ws,
                         width: 60.ws,
-                        color: getColor().colorPrimary,
+                        color: themes.colorPrimary,
                       ),
               ),
             )),
@@ -186,7 +186,7 @@ class TwoButtonDialogWidget extends DialogWidget {
             text: textCancel ?? Strings.cancel.trans,
             radius: 60.ws,
             height: 36.hs,
-            color: getColor().colorWhite,
+            color: themes.colorWhite,
             textStyle: text16.bold.black,
             onPressed: () {
               Navigator.pop(context);
@@ -199,7 +199,7 @@ class TwoButtonDialogWidget extends DialogWidget {
         ),
         Expanded(
           child: RoundButton(
-            color: getColor().colorPrimary,
+            color: themes.colorPrimary,
             text: textConfirm ?? Strings.confirm.trans,
             radius: 60.ws,
             textStyle: text16.bold.white,

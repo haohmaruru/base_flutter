@@ -9,6 +9,7 @@
   "confirm": "Xác nhận",
   "cancel": "Hủy",
   "theme": "Chủ đề",
+  "changeTheme": "Đổi chủ đề",
   "language": "Ngôn ngữ",
   "defaults": "Mặc định",
   "vietnamese": "Tiếng Việt",
@@ -17,5 +18,6 @@
   "all": "Tất cả",
   "noData": "Không có dữ liệu",
   "retry": "Thử lại",
-  "both": "Cả hai"
+  "both": "Cả hai",
+  "login":"Đăng nhập"
 }

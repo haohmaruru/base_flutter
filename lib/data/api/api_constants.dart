@@ -1,6 +1,3 @@
-String UPLOAD_PHOTO_URL = "";
-const PAGE_SIZE = 30;
+const apiPageSize = 30;
 
-String BASE_URL_DEV = "";
-String BASE_URL_STAGING = "";
-String BASE_URL_PROD = "";
+const product = '/products/1'; // hard code for test

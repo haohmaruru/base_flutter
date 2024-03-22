@@ -1,7 +1,6 @@
 import 'package:base/ui/base/base_controller.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 import '../../data/api/api_constants.dart';
@@ -15,7 +14,7 @@ abstract class BaseListController<T> extends BaseController {
   int page = 1;
   bool isLoadingMore = false;
 
-  int get pageSize => PAGE_SIZE;
+  int get pageSize => apiPageSize;
 
   int get itemCount => items.value.length;
 
@@ -32,15 +31,12 @@ abstract class BaseListController<T> extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    controller = new ScrollController()..addListener(_scrollListener);
+    controller = ScrollController()..addListener(_scrollListener);
     if (isLoadCacheData) {
       loadCacheData();
     } else if (autoLoadData) {
       loadData();
     }
-    KeyboardVisibilityController().onChange.listen((bool visible) {
-      isShowKeyBoard = visible;
-    });
   }
 
   jumpToTop() {
@@ -62,8 +58,6 @@ abstract class BaseListController<T> extends BaseController {
   }
 
   loadData({dynamic params, bool isClear = false}) async {
-    print(
-        "\n\n*************************** page: $page ***************************\n\n");
     this._params = params;
     try {
       final data = await getData(params: params, isClear: isClear);
@@ -104,7 +98,6 @@ abstract class BaseListController<T> extends BaseController {
 
   loadMoreData({dynamic params}) async {
     if (!isLoadingMore) {
-      print("LoadMoreMore");
       isLoadingMore = true;
       await loadData(params: params);
       isLoadingMore = false;

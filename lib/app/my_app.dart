@@ -15,7 +15,7 @@ class MyApp extends GetWidget<AppController> {
       child: Obx(
         () => GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "base",
+          title: controller.getAppTitle(),
           locale: controller.locale.value,
           theme: Get.find<ThemeManager>().themeData.value,
           initialRoute: _getRoute(),
@@ -42,8 +42,6 @@ class MyApp extends GetWidget<AppController> {
       case AuthState.authorized:
         return AppRoutes.MAIN;
       case AuthState.newInstall:
-        return AppRoutes.MAIN;
-      case AuthState.uncompleted:
         return AppRoutes.MAIN;
       default:
         return AppRoutes.MAIN;

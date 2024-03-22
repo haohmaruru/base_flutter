@@ -1,12 +1,12 @@
+import 'package:base/res/theme/theme_manager.dart';
 import 'package:base/ui/base/base_list_controller.dart';
 import 'package:base/ui/base/base_page.dart';
+import 'package:base/widget/empty_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../res/theme/theme_manager.dart';
-import '../../widget/empty_widget.dart';
-
-abstract class BaseListPage<I, M extends BaseListController<I>>
-    extends BasePage<M> {
+//ignore: must_be_immutable
+abstract class BaseListPage<M, C extends BaseListController<M>>
+    extends BasePage<C> {
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
 
@@ -52,8 +52,9 @@ abstract class BaseListPage<I, M extends BaseListController<I>>
     controller.loadData();
   }
 
-  Widget buildItem(BuildContext context, I item, int index);
+  Widget buildItem(BuildContext context, M item, int index);
 
+  /// Build widget separator of listview
   Widget buildSeparator(BuildContext context, int index) {
     return Container(
       height: itemSpacing,
@@ -61,23 +62,29 @@ abstract class BaseListPage<I, M extends BaseListController<I>>
     );
   }
 
+  /// Build widget show when listview empty
   Widget buildEmptyView(BuildContext context) {
     return EmptyWidget();
   }
 
+  /// enable pull to refresh for listview
   bool get enableRefresh => true;
 
+  /// Padding listview with page
   EdgeInsets get padding => const EdgeInsets.all(0);
 
+  /// Separator spacing
   double get itemSpacing => 0;
 
+  /// [shrinkWrap] of listview
   bool get shrinkWrap => false;
 
+  /// [reverse] of list view
   bool get reverse => false;
 
-  bool get isLoadCacheData => false;
+  /// Separator background
+  Color get dividerColor => themes.colorWhite;
 
-  Color get dividerColor => getColor().colorWhite;
-
+  /// [physics] of list view
   ScrollPhysics get physics => const AlwaysScrollableScrollPhysics();
 }

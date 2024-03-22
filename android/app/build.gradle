@@ -1,3 +1,13 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dev.flutter.flutter-gradle-plugin'
+    id 'com.google.gms.google-services'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -21,21 +31,17 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 
     sourceSets {
@@ -44,7 +50,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.meoluoi.base"
+        applicationId "com.finos.hdb"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 21
@@ -56,10 +62,57 @@ android {
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
+            // Signing with the release keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+
+        debug {
+            // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions = ["fluttter_flavor_demo"]
+    productFlavors {
+        dev {
+            dimension "fluttter_flavor_demo"
+            resValue "string", "app_name", "base dev"
+            versionNameSuffix ".dev"
+        }
+        prod {
+            dimension "fluttter_flavor_demo"
+            resValue "string", "app_name", "base Prod"
+            versionNameSuffix ".prod"
+        }
+    }
+
+    def flavor = getCurrentFlavor()
+    if (flavor == "dev") {
+        flutter.target "lib/flavors/main_dev.dart"
+    } else {
+        flutter.target "lib/flavors/main_prod.dart"
+    }
+}
+
+def getCurrentFlavor() {
+    String taskRequestsStr = gradle.startParameter.taskRequests.toString()
+    Pattern pattern
+    if (taskRequestsStr.contains("assemble")) {
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    } else {
+        pattern = Pattern.compile("bundle(\\w+)(Release|Debug)")
+    }
+
+    Matcher matcher = pattern.matcher(taskRequestsStr)
+    String flavor
+    if (matcher.find()) {
+        flavor = matcher.group(1).toLowerCase()
+    } else {
+        print("NO FLAVOR FOUND")
+        flavor = ""
+    }
+    return flavor
 }
 
 flutter {
@@ -68,4 +121,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
 }

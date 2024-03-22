@@ -2,8 +2,6 @@ import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'api_constants.dart';
-
 class RestClient {
   static const TIMEOUT = 30; // seconds
   static const ENABLE_LOG = true;
@@ -11,15 +9,18 @@ class RestClient {
   static const LANGUAGE = 'Accept-Language';
 
   late String baseUrl;
+  late String uploadUrl;
   late Map<String, dynamic> headers;
 
   void init(String baseUrl,
-      {String? platform,
+      {String uploadUrl = '',
+      String? platform,
       String? deviceId,
       String? language,
       String? appVersion,
       String? accessToken}) {
     this.baseUrl = baseUrl;
+    this.uploadUrl = uploadUrl;
     headers = {
       'Content-Type': 'application/json',
       'x-app-version': appVersion,
@@ -66,27 +67,11 @@ class RestClient {
 
   BaseOptions getDioBaseOption({String? customUrl, bool isUpload = false}) {
     return BaseOptions(
-      baseUrl: isUpload ? UPLOAD_PHOTO_URL : customUrl ?? baseUrl,
+      baseUrl: isUpload ? uploadUrl : customUrl ?? baseUrl,
       connectTimeout: const Duration(seconds: TIMEOUT),
       receiveTimeout: const Duration(seconds: TIMEOUT),
       headers: headers,
       responseType: ResponseType.json,
     );
-  }
-
-  static void logPrint(Object? object) async {
-    int defaultPrintLength = 1020;
-    if (object == null || object.toString().length <= defaultPrintLength) {
-      print(object);
-    } else {
-      print(
-          "===================================================================================================");
-      final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
-      pattern
-          .allMatches(object.toString())
-          .forEach((match) => print(match.group(0)));
-      print(
-          "===================================================================================================");
-    }
   }
 }

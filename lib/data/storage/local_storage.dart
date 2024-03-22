@@ -1,4 +1,4 @@
-import 'package:base/data/api/model/user.dart';
+import 'package:base/data/model/user.dart';
 import 'package:base/enum/language_enum.dart';
 import 'package:base/enum/theme_enum.dart';
 
