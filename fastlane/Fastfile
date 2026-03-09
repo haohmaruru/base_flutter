@@ -1,0 +1,86 @@
+default_platform(:ios)
+
+# Helper to run flutter build with Obfuscation and specific Targets
+def flutter_build(platform, flavor)
+  UI.message("🚀 Building Flutter [#{platform}] - Flavor: #{flavor}")
+
+  # 1. Map flavor to your specific entry point files (Clean Architecture)
+  target_file = "lib/main_#{flavor}.dart"
+
+  # 2. Obfuscation setup (As requested)
+  symbol_path = "build/symbols"
+  obfuscate_flags = "--obfuscate --split-debug-info=#{symbol_path}"
+
+  if platform == "ios"
+    # Build iOS
+    sh("flutter build ios --release --flavor #{flavor} -t #{target_file} #{obfuscate_flags} --no-codesign")
+
+  elsif platform == "android"
+    # Logic: Production -> AppBundle, Others -> APK
+    if flavor == "production"
+      sh("flutter build appbundle --release --flavor #{flavor} -t #{target_file} #{obfuscate_flags}")
+    else
+      sh("flutter build apk --release --flavor #{flavor} -t #{target_file} #{obfuscate_flags}")
+    end
+  end
+end
+
+platform :ios do
+  desc "iOS: Dev/Staging -> TestFlight, Production -> App Store"
+  lane :deploy do |options|
+    f = options[:flavor] || "dev"
+    flutter_build("ios", f)
+
+    # Build and Sign IPA
+    build_app(
+      project: "./ios/Runner.xcodeproj",
+      scheme: f.capitalize,
+      configuration: "Release-#{f}",
+      export_method: "app-store", # Both TF and App Store use app-store export
+      output_directory: "./build/ios",
+      output_name: "#{f}.ipa"
+    )
+
+    if f == "production"
+      UI.message("📤 Deploying to App Store Review...")
+      upload_to_app_store(force: true, skip_metadata: false, skip_screenshots: true)
+    else
+      UI.message("📤 Deploying to TestFlight (Internal)...")
+      upload_to_testflight(skip_waiting_for_build_processing: true)
+    end
+  end
+end
+
+platform :android do
+  desc "Android: Dev/Staging -> Firebase, Production -> Play Store"
+  lane :deploy do |options|
+    f = options[:flavor] || "dev"
+    flutter_build("android", f)
+
+    if f == "production"
+      UI.message("📤 Deploying AppBundle to Play Store...")
+      upload_to_play_store(
+        track: 'production',
+        flavor: f,
+        aab: "./build/app/outputs/bundle/#{f}Release/app-#{f}-release.aab"
+      )
+    else
+      UI.message("📤 Deploying APK to Firebase App Distribution...")
+      # Ensure you have the firebase_app_distribution plugin installed
+      firebase_app_distribution(
+        app: "YOUR_FIREBASE_APP_ID_FOR_#{f.upcase}",
+        android_package_name: "com.your.package.#{f}",
+        apk_path: "./build/app/outputs/flutter-apk/app-#{f}-release.apk",
+        groups: "internal-testers"
+      )
+    end
+  end
+end
+
+desc "Full Combo Deployment"
+lane :deploy_all do |options|
+  f = options[:flavor] || "dev"
+  android_deploy(flavor: f)
+  ios_deploy(flavor: f)
+  UI.success("✅ Full Combo Finished: #{f}")
+end

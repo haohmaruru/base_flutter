@@ -17,7 +17,7 @@ import 'data/model/flavor.dart';
 import 'di/di.dart';
 import 'util/device_util.dart';
 
-void main() async {
+void startMainWithSetupEnvironment(Environment env) async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -29,8 +29,8 @@ void main() async {
   runZonedGuarded<Future<void>>(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      _configEnvironment();
-      await _initConfigApp();
+      environment = env;
+      await initConfigApp();
       runApp(const MyApp());
     },
     (error, stack) {
@@ -44,46 +44,40 @@ void main() async {
   );
 }
 
-_initConfigApp() async {
+initConfigApp() async {
   await setupDI();
   di.get<DeviceUtil>().init();
-  _initLanguage();
-  await _initTheme();
-  _initNotification();
+  initLanguage();
+  await initTheme();
+  initNotification();
 }
 
-_initNotification() async {
+initNotification() async {
   final notificationUtils = di.get<NotificationUtils>();
   await notificationUtils.initNotification(
-    handleNotificationNavigation: _handleSelectNotification,
-    handleMessageOpenedApp: _handleMessageOpenedApp,
+    handleNotificationNavigation: handleSelectNotification,
+    handleMessageOpenedApp: handleMessageOpenedApp,
     onBackgroundMessage: onBackgroundMessage,
-    onGetInitialMessage: _handleMessageOpenedApp,
+    onGetInitialMessage: handleMessageOpenedApp,
   );
 }
 
-_initLanguage() async {
+initLanguage() async {
   final languageCubit = di.get<LanguageCubit>();
   languageCubit.getLanguage();
 }
 
-_initTheme() async {
+initTheme() async {
   final themeCubit = di.get<ThemeCubit>();
   themeCubit.getTheme();
 }
 
-_configEnvironment() {
-  const flavor = String.fromEnvironment('flavor', defaultValue: 'dev');
-  environment = Environment.getEnvironmentFromString(flavor);
-  Log.d('flavor: $flavor');
-}
-
-_handleSelectNotification(NotificationResponse response) {
+handleSelectNotification(NotificationResponse response) {
   Log.d("handleSelectNotification");
   Log.d('select notification, payload= ${response.payload}');
 }
 
-_handleMessageOpenedApp(RemoteMessage message) async {
+handleMessageOpenedApp(RemoteMessage message) async {
   Log.d("handleMessageOpenedApp");
   Log.d('_handleMessageOpenedApp, message= ${message.toMap().toString()}');
 }

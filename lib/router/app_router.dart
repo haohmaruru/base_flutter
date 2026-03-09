@@ -1,6 +1,4 @@
 import 'package:base_flutter/app/app_global_define.dart';
-import 'package:base_flutter/data/local/local_storage/local_storage.dart';
-import 'package:base_flutter/di/di.dart';
 import 'package:base_flutter/router/app_page_route.dart';
 import 'package:base_flutter/ui/detail/detail_page.dart';
 import 'package:base_flutter/ui/example_list/example_list_page.dart';
@@ -29,16 +27,16 @@ final GoRouter appRouter = GoRouter(
     GoRoute(path: AppPageRoute.login, builder: (context, state) => LoginPage()),
     GoRoute(path: AppPageRoute.exampleList, builder: (context, state) => ExampleListPage()),
   ],
-  redirect: (context, state) async {
-    // if app is not log in yet and try to access any page except login,
-    // redirect to login page
-    final accessToken = await di.get<LocalStorage>().getUserAccessToken();
-    if (state.fullPath != AppPageRoute.login && accessToken?.isNotEmpty != true) {
-      return AppPageRoute.login;
-    } else {
-      return null;
-    }
-  },
+  // redirect: (context, state) async {
+  //   // if app is not log in yet and try to access any page except login,
+  //   // redirect to login page
+  //   final accessToken = await di.get<LocalStorage>().getUserAccessToken();
+  //   if (state.fullPath != AppPageRoute.login && accessToken?.isNotEmpty != true) {
+  //     return AppPageRoute.login;
+  //   } else {
+  //     return null;
+  //   }
+  // },
 );
 
 class Navigation {

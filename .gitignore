@@ -1,3 +1,7 @@
+# Do not remove or rename entries in this file, only add new ones
+# See https://github.com/flutter/flutter/issues/128635 for more context.
+
+# Miscellaneous
 *.class
 *.lock
 *.log
@@ -8,39 +12,74 @@
 .buildlog/
 .history
 .svn/
+.build/
+.swiftpm/
+migrate_working_dir/
+.temp/
+
+# As packages are no longer pinned, we use a lockfile for testing locally.
+# When unpinning packages, Using lockfiles ensures that failures in PRs are
+# actually due to those PRs, not due to a package being updated.
+!/pubspec.lock
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
+.idea/caches/
 .idea/libraries/
-.idea/base_flutter.iml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
-.idea/.gitignore
-.idea/misc.xml
-.idea/.name
-.idea/kotlinc.xml
-.idea/markdown.xml
 .idea/deviceManager.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/.name
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/vcs.xml
+.idea/markdown.xml
+
+*.apk
+*.aab
+*.ap_
+*.dex
+#*.jar
+**/build/
+**/captures/
+
+# gen code
+*.g.dart
 
 # Visual Studio Code related
 .classpath
 .project
 .settings/
-#.vscode/
+.vscode/*
+.ccls-cache
+
+
+/bin/internal/engine.version
 
 # Flutter repo-specific
 /bin/cache/
 /bin/internal/bootstrap.bat
 /bin/internal/bootstrap.sh
+/bin/internal/engine.realm
 /bin/mingit/
 /dev/benchmarks/mega_gallery/
 /dev/bots/.recipe_deps
 /dev/bots/android_tools/
 /dev/devicelab/ABresults*.json
 /dev/docs/doc/
+/dev/docs/api_docs.zip
 /dev/docs/flutter.docs.zip
 /dev/docs/lib/
 /dev/docs/pubspec.yaml
@@ -56,28 +95,37 @@ analysis_benchmark.json
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
-.flutter-plugins
 .flutter-plugins-dependencies
 **/generated_plugin_registrant.dart
 .packages
+.pub-preload-cache/
 .pub-cache/
 .pub/
+.flutter-plugins
 build/
 flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
+pubspec.lock
+**/pubspec.lock
 
 # Android related
 **/android/**/gradle-wrapper.jar
-.gradle/
+*.gradle/
 **/android/captures/
 **/android/gradlew
 **/android/gradlew.bat
-**/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
+**/android/.gradle
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+**/android/.idea/
 *.jks
+local.properties
+**/.cxx/
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -117,8 +165,16 @@ unlinked_spec.ds
 **/xcuserdata/
 
 # Windows
+**/windows/flutter/ephemeral/
 **/windows/flutter/generated_plugin_registrant.cc
 **/windows/flutter/generated_plugin_registrant.h
+**/windows/flutter/generated_plugins.cmake
+
+# Linux
+**/linux/flutter/ephemeral/
+**/linux/flutter/generated_plugin_registrant.cc
+**/linux/flutter/generated_plugin_registrant.h
+**/linux/flutter/generated_plugins.cmake
 
 # Coverage
 coverage/
@@ -133,9 +189,40 @@ app.*.symbols
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
+!.vscode/settings.json
 
-# AI
+# Monorepo
+.cipd
+.gclient
+.gclient_entries
+.python-version
+.gclient_previous_custom_vars
+.gclient_previous_sync_commits
+/devtools_options.yaml
+fastlane/report.xml
+fastlane/firebase_service_account.json
+fastlane/local
+
+/local
+*.p8
+*.p12
+*.mobileprovision
+*.cer
+*.b64
+.env
+.var
+
+/pipeline/deployment
+.bitbucket_var.toml
+.github_var.toml
+.secret.toml
+.env.secret.toml
 
 # Firebase
 **/google-services.json
 **/GoogleService-Info.plist
+
+
+# environment
+
+
