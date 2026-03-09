@@ -1,0 +1,22 @@
+{
+  "@@locale": "vi",
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "A welcome message"
+  },
+  "login": "Đăng nhập",
+  "homePage": "Trang chủ",
+  "language": "Tiếng Việt",
+  "changeLanguage": "Thay đổi ngôn ngữ",
+  "changeTheme": "Thay đổi chủ đề",
+  "imageAsset": "Hình ảnh asset",
+  "icon": "Icon",
+  "imageRemote": "Hình ảnh remote",
+  "error": "Lỗi",
+  "close": "Đóng",
+  "noData": "Không có dữ liệu",
+  "retry": "Thử lại",
+  "ok": "OK",
+  "cancel": "Hủy",
+  "testListPage": "Test List Page"
+}

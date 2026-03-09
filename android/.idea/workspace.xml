@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f2ceff59-07dc-4dff-9f38-8839c721c84a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.aiexclude" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.gkgignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AGENTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../install-commit-validator.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/fonts/GoogleSans-Bold.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/fonts/GoogleSans-Medium.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/fonts/GoogleSans-Regular.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/icons/ic_logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/images/img_zoom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../icons-gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../icons-gen.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../images-gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../images-gen.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/app/app_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/app/app_pages.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/app/app_routes.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/app/environment.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/app/my_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/app/my_app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/api/api_constants.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/api/rest_client.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/storage/app_storage.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/storage/local_storage.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/di/locator.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/enum/language_enum.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/enum/theme_enum.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/app_localizations.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/colors.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/dimens.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/res/icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/res/images.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/intl/messages_all.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/intl/messages_en.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/intl/messages_vi.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/intl_en.arb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/intl_vi.arb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/l10n/l10n.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/strings.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/theme/app_theme.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/theme/text_theme.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/res/theme/theme_manager.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/base/base_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/base/base_list_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/base/base_list_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/base/base_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/list/list_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/list/list_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/login/login_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/ui/login/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/main/main_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/ui/main/main_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/utils/device_utils.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/button_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/dialog_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/empty_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/error_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/loading_dialog.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/widget/loading_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../models-gen.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../strings-gen.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../test/widget_test.dart" afterDir="false" />
+      <change beforePath="$USER_HOME$/fvm/versions/3.32.0/packages/flutter_tools/gradle/src/main/scripts/native_plugin_loader.gradle.kts" beforeDir="false" afterPath="$USER_HOME$/fvm/versions/3.32.0/packages/flutter_tools/gradle/src/main/scripts/native_plugin_loader.gradle.kts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=/Users/minh.nguyen/.android/avd/Medium_Phone.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="android" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;haohmaruru&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/flutter/flutter.git&quot;,
+    &quot;accountId&quot;: &quot;5b79d3d9-7018-4a42-b193-20a9f23356e3&quot;
+  }
+}</component>
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$USER_HOME$/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku/gradle-8.13" javaHome="$APPLICATION_HOME_DIR$/jbr/Contents/Home" gradleVersion="8.13">
+    <option name="jvmArguments">
+      <list>
+        <option value="-Didea.compose.hot-reload=true" />
+        <option value="-Didea.compose.hot-reload.version=2" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="30MEhqO8LWkG0rsXqzf54KyLEMA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "Gradle.android [:gradle:test].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/minh.nguyen/code/sample/base_flutter_github/android",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/production" />
+      <recent name="$PROJECT_DIR$/app/src/staging" />
+      <recent name="$PROJECT_DIR$/app/src/dev" />
+      <recent name="$PROJECT_DIR$/app/src/develop" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="android.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="android [:gradle:test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":gradle:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.android [:gradle:test]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f2ceff59-07dc-4dff-9f38-8839c721c84a" name="Changes" comment="" />
+      <created>1753429163893</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753429163893</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.base_flutter">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951115" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.dev">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951114" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.dev.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951118" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.stag">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951111" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.stag.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951111" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755576951117" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.uat">
+          <value>
+            <CheckInfo lastCheckTimestamp="1753667602325" />
+          </value>
+        </entry>
+        <entry key="com.example.base_flutter.uat.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1753667602326" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731343" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter.dev">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731344" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter.dev.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731347" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter.stag">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731344" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter.stag.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731345" />
+          </value>
+        </entry>
+        <entry key="com.example.baseflutter.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1755590731343" />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

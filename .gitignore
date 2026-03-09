@@ -22,6 +22,8 @@
 .idea/misc.xml
 .idea/.name
 .idea/kotlinc.xml
+.idea/markdown.xml
+.idea/deviceManager.xml
 
 # Visual Studio Code related
 .classpath
@@ -133,3 +135,7 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 
 # AI
+
+# Firebase
+**/google-services.json
+**/GoogleService-Info.plist

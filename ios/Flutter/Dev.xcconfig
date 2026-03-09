@@ -1,0 +1,17 @@
+//
+//  Dev.xcconfig
+//  Runner
+//
+//  Created by Nguyen Cong Minh on 28/7/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.dev.xcconfig" // Nếu có Pods flavors
+#include "Generated.xcconfig"
+
+APP_DISPLAY_NAME = Dev Base Flutter
+BUNDLE_ID_SUFFIX = .dev
+GOOGLE_SERVICE_INFO_PLIST_PATH = /Firebase/dev/GoogleService-Info.plist
+DART_DEFINES_FLAVOR=flavor=dev
+//DART_DEFINES=Zmxhdm9yPWRldg==,Zmx1dHRlci5pbnNwZWN0b3Iuc3RydWN0dXJlZEVycm9ycz10cnVl,RkxVVFRFUl9WRVJTSU9OPTMuMzIuMA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049YmU2OThjNDhhNg==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTg4MTgwMDk0OQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My44LjA=

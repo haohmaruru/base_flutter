@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "A welcome message"
+  },
+  "login": "Login",
+  "homePage": "Home page",
+  "language": "English",
+  "changeLanguage": "Change language",
+  "changeTheme": "Change theme",
+  "imageAsset": "Image asset",
+  "icon": "Icon",
+  "imageRemote": "Image remote",
+  "error": "Error",
+  "close": "Close",
+  "noData": "No data",
+  "retry": "Retry",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "testListPage": "Test List Page"
+}
