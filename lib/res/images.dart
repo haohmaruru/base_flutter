@@ -1,3 +1,3 @@
 class AppImages {
-  static String get zoom => "assets/images/img_zoom.png";
+  static String get test => "assets/images/img_test.png";
 }

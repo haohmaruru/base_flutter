@@ -1,3 +1,3 @@
 class AppIcons {
-  static String get logo => "assets/icons/ic_logo.svg";
+  static String get test => "assets/icons/ic_test.svg";
 }
