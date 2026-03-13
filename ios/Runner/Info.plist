@@ -51,5 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>firebase_crashlytics_collection_enabled</key>
+    <true/>
 </dict>
 </plist>

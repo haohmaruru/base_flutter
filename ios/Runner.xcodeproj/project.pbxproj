@@ -279,6 +279,7 @@
 				E138901E140F9327B17F79E6 /* [CP] Embed Pods Frameworks */,
 				D4B9426B62A9C634BE1EC6BF /* [CP] Copy Pods Resources */,
 				0F0686AC44D4516FE6B2D873 /* [firebase_crashlytics] Crashlytics Upload Symbols */,
+				DC6145092F63CD8E00A0966B /* Upload Flutter symbols to Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -375,7 +376,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" --flutter-project \"$PROJECT_DIR/firebase_app_id_file.json\" ";
+			shellScript = "\"$PODS_ROOT/FirebaseCrashlytics/upload-symbols\" --flutter-project \"$PROJECT_DIR/firebase_app_id_file.json\" \n";
 		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -486,6 +487,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nGOOGLE_SERVICE_INFO_PLIST_FROM=\"${PROJECT_DIR}/${TARGET_NAME}/${GOOGLE_SERVICE_INFO_PLIST_PATH}\"\n\nGOOGLE_SERVICE_INFO_PLIST_TO=\"${PROJECT_DIR}/${TARGET_NAME}/Firebase/GoogleService-Info.plist\"\n\ncp \"${GOOGLE_SERVICE_INFO_PLIST_FROM}\" \"${GOOGLE_SERVICE_INFO_PLIST_TO}\"\n";
+		};
+		DC6145092F63CD8E00A0966B /* Upload Flutter symbols to Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Flutter symbols to Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "chmod +x ios/Runner/upload_flutter_symbols.sh\n/bin/sh \"$PROJECT_DIR/Runner/upload_flutter_symbols.sh\"\n    \n";
 		};
 		E138901E140F9327B17F79E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
