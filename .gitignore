@@ -54,6 +54,8 @@ migrate_working_dir/
 #*.jar
 **/build/
 **/captures/
+**.bin
+**/.crashlytics/
 
 # gen code
 *.g.dart
