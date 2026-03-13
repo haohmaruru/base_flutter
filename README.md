@@ -131,17 +131,23 @@ class AppIcons {
 * Debug:
 
 ```
-flutter build apk --flavor <flavor> --debug --dart-define=flavor=<flavor>
+flutter build apk --flavor <flavor> --debug --target=lib/main_<flavor>.dart
 
-Ex: flutter build apk --flavor dev --debug --dart-define=flavor=dev
+**Ex: **
+flavor dev: 
+flutter build apk --flavor dev --debug --target=lib/main_dev.dart
 ```
 
 * Release:
 
 ```
-flutter build apk --flavor <flavor> --dart-define=flavor=<flavor>
+flutter build apk --obfuscate --flavor <flavor> --split-debug-info=build/app/outputs/symbols --target=lib/main_<flavor>.dart
 
-Ex: flutter build apk --flavor dev --dart-define=flavor=dev
+**Ex Build: **
+flutter build apk --obfuscate --flavor dev --split-debug-info=build/app/outputs/symbols --target=lib/main_dev.dart
+
+**Install**
+adb install -r build/app/outputs/flutter-apk/app-dev-release.apk   
 ```
 
 ### IOS
@@ -149,15 +155,15 @@ Ex: flutter build apk --flavor dev --dart-define=flavor=dev
 * Debug
 
 ```
-flutter run --flavor <flavor> --dart-define=flavor=<flavor>
+flutter run --flavor <flavor> --target=lib/main_<flavor>.dart
 
-Ex: flutter run --flavor dev --dart-define=flavor=dev
+Ex: flutter run --flavor dev --target=lib/main_dev.dart
 ```
 
 * Release:
 
 ```
-flutter build ipa --flavor <flavor> --dart-define=flavor=<flavor>
+flutter build ipa --obfuscate --flavor <flavor> --split-debug-info=build/app/outputs/symbols --target=lib/main_<flavor>.dart
 
-Ex: flutter build ipa --flavor dev --dart-define=flavor=dev
+Ex: flutter build ipa --obfuscate --flavor dev --split-debug-info=build/app/outputs/symbols --target=lib/main_dev.dart
 ```

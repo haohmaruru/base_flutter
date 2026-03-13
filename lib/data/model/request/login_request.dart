@@ -1,5 +1,3 @@
-import 'package:base_flutter/data/model/converter/user_type_converter.dart';
-import 'package:base_flutter/data/model/enum/user_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_request.g.dart';
@@ -9,11 +7,7 @@ class LoginRequest {
   String email;
   String password;
 
-  @JsonKey(name: 'user_type')
-  @UserTypeConverter()
-  UserType userType;
-
-  LoginRequest({required this.email, required this.password, required this.userType});
+  LoginRequest({required this.email, required this.password});
 
   factory LoginRequest.fromJson(Map<String, dynamic> json) => _$LoginRequestFromJson(json);
 
@@ -21,6 +15,6 @@ class LoginRequest {
 
   @override
   String toString() {
-    return 'LoginRequest(email: $email, password: $password, userType: ${userType.name})';
+    return 'LoginRequest(email: $email, password: $password)';
   }
 }

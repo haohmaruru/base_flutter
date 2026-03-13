@@ -4,11 +4,13 @@ import 'package:base_flutter/ui/detail/detail_page.dart';
 import 'package:base_flutter/ui/example_list/example_list_page.dart';
 import 'package:base_flutter/ui/home/home_page.dart';
 import 'package:base_flutter/ui/login/login_page.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: rootNavigatorKey,
-  initialLocation: AppPageRoute.home,
+  observers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
+  initialLocation: AppPageRoute.login,
   debugLogDiagnostics: true,
   routes: [
     GoRoute(

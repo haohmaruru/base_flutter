@@ -1,3 +1,5 @@
+# install firebase CLI if need
+curl -sL https://firebase.tools | bash
 # gen code for model
 flutter pub run build_runner build --delete-conflicting-outputs
 # gen code for language

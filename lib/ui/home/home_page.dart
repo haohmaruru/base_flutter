@@ -26,6 +26,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _homeCubit = di.get<HomeCubit>();
+  bool _isTriggerRedScreen = false;
+  bool _isTriggerFlexError = false;
 
   @override
   void initState() {
@@ -35,43 +37,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final currentAppTheme = rootNavigatorKey.currentState!.context
-    //     .read<ThemeCubit>();
-    // switch (currentAppTheme.state) {
-    //   case BasicAppTheme _:
-    //     theme = Theme.of(
-    //       rootNavigatorKey.currentState!.context,
-    //     ).extension<BasicAppTheme>()!;
-    //     break;
-    //   case SecondaryTheme _:
-    //     theme = Theme.of(context).extension<SecondaryTheme>()!;
-    //     break;
-    // }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: context.theme.bannerColor,
         title: Text(language.homePage, style: textTitleAppBar.bold),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(language.homePage, style: textTitle.bold),
-            SizedBox(height: 40.hs),
-            _buildImage(),
-            SizedBox(height: 20.hs),
-            _buildIcon(),
-            SizedBox(height: 20.hs),
-            _buildRemoteImage(),
-            SizedBox(height: 20.hs),
-            Text(language.language),
-            SizedBox(height: 20.hs),
-            _buildLanguage(),
-            SizedBox(height: 20.hs),
-            _buildTheme(),
-            SizedBox(height: 20.hs),
-            _buildTestListPage(),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(language.homePage, style: textTitle.bold),
+              SizedBox(height: 40.hs),
+              _buildImage(),
+              SizedBox(height: 20.hs),
+              _buildIcon(),
+              SizedBox(height: 20.hs),
+              _buildRemoteImage(),
+              SizedBox(height: 20.hs),
+              Text(language.language),
+              SizedBox(height: 20.hs),
+              _buildLanguage(),
+              SizedBox(height: 20.hs),
+              _buildTheme(),
+              SizedBox(height: 20.hs),
+              _buildTestListPage(),
+              SizedBox(height: 20.hs),
+              _buildCrashUI(),
+              SizedBox(height: 20.hs),
+              _buildRenderFlexErrorUI(),
+              SizedBox(height: 40.hs),
+            ],
+          ),
         ),
       ),
     );
@@ -109,7 +106,6 @@ class _HomePageState extends State<HomePage> {
         } else {
           context.read<ThemeCubit>().setTheme(BasicAppTheme.self());
         }
-        // setState(() {});
       },
     );
   }
@@ -157,6 +153,76 @@ class _HomePageState extends State<HomePage> {
       onTap: () {
         Navigation.goToPage(AppPageRoute.exampleList);
       },
+    );
+  }
+
+  Widget _buildCrashUI() {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            throw Exception("Manual Exception for testing");
+          },
+          child: Container(
+            padding: EdgeInsets.all(10.hs),
+            decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(10.ws)),
+            child: Text("Tap to throw Exception", style: textContent.bold.copyWith(color: Colors.white)),
+          ),
+        ),
+        SizedBox(height: 10.hs),
+        InkWell(
+          onTap: () {
+            setState(() {
+              _isTriggerRedScreen = true;
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.all(10.hs),
+            decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(10.ws)),
+            child: Text("Tap to trigger Red Screen", style: textContent.bold.copyWith(color: Colors.white)),
+          ),
+        ),
+        if (_isTriggerRedScreen)
+          // Gây lỗi Render: Expanded phải nằm trong Row/Column/Flex trực tiếp.
+          // Ở đây nó nằm trong Column nhưng cha của Column là SingleChildScrollView,
+          // điều này sẽ gây lỗi chiều cao không xác định.
+          const Expanded(child: Text("This causes a crash")),
+      ],
+    );
+  }
+
+  Widget _buildRenderFlexErrorUI() {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() {
+              _isTriggerFlexError = true;
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.all(10.hs),
+            decoration: BoxDecoration(color: Colors.deepPurple, borderRadius: BorderRadius.circular(10.ws)),
+            child: Text("Trigger Horizontal Flex Error", style: textContent.bold.copyWith(color: Colors.white)),
+          ),
+        ),
+        if (_isTriggerFlexError)
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const Text("Fixed Width Text"),
+                Expanded(
+                  child: Container(
+                    color: Colors.red,
+                    height: 50.hs,
+                    child: const Text("RenderFlex Error: Expanded in unbounded horizontal space"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:base_flutter/app/app_global_define.dart';
 import 'package:base_flutter/app/language_cubit.dart';
 import 'package:base_flutter/util/log_util.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -18,6 +19,7 @@ import 'di/di.dart';
 import 'util/device_util.dart';
 
 void startMainWithSetupEnvironment(Environment env) async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -26,22 +28,21 @@ void startMainWithSetupEnvironment(Environment env) async {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
-  runZonedGuarded<Future<void>>(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
-      environment = env;
-      await initConfigApp();
-      runApp(const MyApp());
-    },
-    (error, stack) {
-      if (!kDebugMode) {
-        Log.e('catch error', error: error, stackTrace: stack);
-        FirebaseCrashlytics.instance.recordError(error, stack);
-      } else {
-        throw error;
-      }
-    },
-  );
+  await Firebase.initializeApp();
+
+  FlutterError.onError = (FlutterErrorDetails errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack);
+    (error, stack);
+    return true;
+  };
+
+  environment = env;
+  await initConfigApp();
+  runApp(const MyApp());
 }
 
 initConfigApp() async {

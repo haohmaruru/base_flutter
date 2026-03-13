@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:base_flutter/data/firebase/firebase_utils.dart';
 import 'package:base_flutter/data/firebase/local_notification_utils.dart';
 import 'package:base_flutter/util/log_util.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationUtils {
   Future<void> initNotification({
@@ -15,7 +15,7 @@ class NotificationUtils {
     Function(RemoteMessage message)? onGetInitialMessage,
     Function(RemoteMessage message)? onReceiveMessage,
   }) async {
-    await FirebaseUtils.initFirebase();
+    // await FirebaseUtils.initFirebase();
     await FirebaseUtils.requestNotificationPermissions();
     LocalNotificationUtils.initialize(onSelectNotification: handleNotificationNavigation);
 
